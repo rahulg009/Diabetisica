@@ -6,7 +6,7 @@ import streamlit as st
 from PIL import Image
 
 
-classifier = tf.keras.models.load_model('mymodel.h5')
+classifier = tf.keras.models.load_model('model.h5')
 classifier.summary()
 
 def welcome():
@@ -41,7 +41,7 @@ def main():
     * Then Proceed to Diabetic Pedigree function.
     
 ''')
-    b = st.number_input("Enter is your Age (yr)")
+    b = st.number_input("Enter is your Age (yr)",step=1.0,max_value=150.0)
     
     height= st.slider(label='Enter is your Height(in centimeter)?',min_value=30,max_value=200,step=1)
     weight= st.slider(label='Enter is your Weight(in Kg)?',min_value=5,max_value=150,step=1)
@@ -51,14 +51,14 @@ def main():
     st.write('Your BMI',BMI)
     a = st.slider("Enter Your Blood Pressure (mm Hg)",0.0,122.0,step=1.0)
     
-    c= st.number_input(label='How many number of times you have been pregnent?',min_value=0.0) 
+    c= st.number_input(label='How many number of times you have been pregnent?',min_value=0.0,step=1.0) 
     d = st.number_input(label="Enter Your Tricep Skinfold Thickness (in mm)",min_value=0.0)
     if st.button('To know Skinfold Thinkness'):
         st.image("1.jpg")
         st.write('''
         #### Ideal Tricep Skinfold Thickness is around 20.0 mm
     ''')
-    e = st.number_input("Diabetic Pedigree Function")
+    e = st.number_input("Diabetic Pedigree Function",min_value=0.0,max_value=1.0)
     if st.button("Know Pedigree Function"):
         st.write('''
                  * Diabetes pedigree function (a function which scores likelihood of diabetes based on family history) 
